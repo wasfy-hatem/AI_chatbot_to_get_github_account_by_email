@@ -1,0 +1,45 @@
+import urllib
+import json
+import os
+
+from flask import Flask
+from flask import request
+from flask import make_response
+from flask import jsonify
+
+import psycopg2
+import urllib.parse
+import time
+
+
+
+
+
+#API v2
+def make_simple_message(speech, replies):
+    '''
+    return {
+        "fulfillmentText": speech,
+        "fulfillmentMessages":[
+            {
+                "type": 2,
+                "title": speech,
+                "replies": replies
+                }
+            ]
+        }
+        '''
+    return {
+
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [
+            {
+                "text": {
+                    "text": [
+                        speech
+                    ]
+                }
+            }
+        ],
+
+    }
